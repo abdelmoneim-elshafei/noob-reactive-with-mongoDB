@@ -13,6 +13,7 @@ public interface BookService {
     Mono<BookDTO> updateBookById(String id,BookDTO bookDTO);
     Mono<BookDTO> patchBookById(String id,BookDTO bookDTO);
     Mono<Void> deleteBookById(String id);
+    Flux<BookDTO> findBookByIsbn(String isbn);
 
 
 }

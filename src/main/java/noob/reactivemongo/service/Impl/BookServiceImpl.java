@@ -1,6 +1,5 @@
 package noob.reactivemongo.service.Impl;
 
-import io.netty.util.internal.StringUtil;
 import lombok.AllArgsConstructor;
 import noob.reactivemongo.mapper.BookMapper;
 import noob.reactivemongo.model.BookDTO;
@@ -89,5 +88,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public Mono<Void> deleteBookById(String id) {
         return bookRepository.deleteById(id);
+    }
+
+    @Override
+    public Flux<BookDTO> findBookByIsbn(String isbn) {
+        return bookRepository.findBooksByBookIsbn(isbn)
+                .map(bookMapper::bookToBookDto);
     }
 }
